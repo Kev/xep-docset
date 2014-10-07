@@ -1,5 +1,7 @@
 import xml.dom.minidom
 
+print 'CREATE TABLE IF NOT EXISTS searchIndex(id INTEGER PRIMARY KEY);'
+print 'DROP TABLE searchIndex;'
 print 'CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);'
 print 'CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);'
 
@@ -13,7 +15,7 @@ for i in range(1,353):
   putSQL(name, type, path)
   name = "xep%04d" % i
   putSQL(name, type, path)
-  dom = xml.dom.minidom.parse("extensions/xep-%04d.xml" % i)
+  dom = xml.dom.minidom.parse("xmpp/extensions/xep-%04d.xml" % i)
   header = dom.getElementsByTagName('header')
   title = header[0].getElementsByTagName('title')[0]
   for child in title.childNodes:

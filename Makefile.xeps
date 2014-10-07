@@ -1,0 +1,19 @@
+XML_FILES := $(wildcard xep-0*.xml)
+HTML_FILES := $(XML_FILES:.xml=.html)
+
+.PHONY: all
+all: update $(HTML_FILES) xmpp.css prettify.js
+
+update:
+	git pull --rebase
+
+%.html: %.xml
+	xsltproc -o $@.tmp xep.xsl $<
+	sed -e 's,"\.\./,",g' $@.tmp > $@
+	rm $@.tmp
+
+xmpp.css: ../xmpp.css
+	cp ../xmpp.css .
+
+prettify.js: ../prettify.js
+	cp ../prettify.js .
