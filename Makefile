@@ -30,4 +30,4 @@ xmpp-build: xmpp/extensions/Makefile
 	$(MAKE) -C xmpp/extensions
 
 xmpp:
-	git clone git@perseus.jabber.org:xmpp.git
+	git clone git://gitorious.org/xmpp/xmpp.git
