@@ -13,18 +13,19 @@ def putSQL(name, type, path):
 
 xepre = re.compile('xep-0*([1-9][0-9]*).xml')
 for root, dirs, files in os.walk('xeps'):
-    for path in files:
-        match = xepre.match(path)
+    for fn in files:
+        match = xepre.match(fn)
         if not match:
             continue
 
         i = int(match.group(1))
+        path = 'xep-%04d.html' % (i,)
         type = 'Extension'
         name = "xep%d" % i
         putSQL(name, type, path)
         name = "xep%04d" % i
         putSQL(name, type, path)
-        dom = xml.dom.minidom.parse(os.path.join(root, path))
+        dom = xml.dom.minidom.parse(os.path.join(root, fn))
         header = dom.getElementsByTagName('header')
         title = header[0].getElementsByTagName('title')[0]
         for child in title.childNodes:
