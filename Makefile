@@ -6,7 +6,6 @@ all: docs db
 .PHONY: clean
 clean:
 	rm -rf XEPs.docset/Contents/Resources
-	rm xeps/Makefile
 	rm xeps/*.html
 
 .PHONY: db
