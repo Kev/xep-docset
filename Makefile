@@ -23,7 +23,7 @@ XEPs.docset/Contents/Resources/Documents:
 	mkdir -p XEPs.docset/Contents/Resources/Documents/
 
 .PHONY: xeps-build
-xeps-build: Makefile.xeps
+xeps-build: xeps Makefile.xeps
 	$(MAKE) -f ../Makefile.xeps -C xeps
 
 xeps:
