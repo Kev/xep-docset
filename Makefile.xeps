@@ -11,9 +11,3 @@ update:
 	xsltproc -o $@.tmp xep.xsl $<
 	sed -e 's,"\.\./,",g' $@.tmp > $@
 	rm $@.tmp
-
-xmpp.css: ../xmpp.css
-	cp ../xmpp.css .
-
-prettify.js: ../prettify.js
-	cp ../prettify.js .

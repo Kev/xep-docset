@@ -6,28 +6,25 @@ all: docs db
 .PHONY: clean
 clean:
 	rm -rf XEPs.docset/Contents/Resources
-	rm xmpp/extensions/Makefile
-	rm xmpp/extensions/*.html
+	rm xeps/Makefile
+	rm xeps/*.html
 
 .PHONY: db
-db: xmpp-build
+db: xeps-build
 	python generate_index.py | sqlite3 XEPs.docset/Contents/Resources/docSet.dsidx
 
 .PHONY: docs
-docs: XEPs.docset/Contents/Resources/Documents xmpp-build
-	cp xmpp/extensions/*.html XEPs.docset/Contents/Resources/Documents/
-	cp xmpp/extensions/*.css XEPs.docset/Contents/Resources/Documents/
-	cp xmpp/extensions/*.js XEPs.docset/Contents/Resources/Documents/
+docs: XEPs.docset/Contents/Resources/Documents xeps-build
+	cp xeps/*.html XEPs.docset/Contents/Resources/Documents/
+	cp xeps/*.css XEPs.docset/Contents/Resources/Documents/
+	cp xeps/*.js XEPs.docset/Contents/Resources/Documents/
 
 XEPs.docset/Contents/Resources/Documents:
 	mkdir -p XEPs.docset/Contents/Resources/Documents/
 
-xmpp/extensions/Makefile: xmpp
-	cp Makefile.xeps xmpp/extensions/Makefile
+.PHONY: xeps-build
+xeps-build: Makefile.xeps
+	$(MAKE) -f ../Makefile.xeps -C xeps
 
-.PHONY: xmpp-build
-xmpp-build: xmpp/extensions/Makefile
-	$(MAKE) -C xmpp/extensions
-
-xmpp:
-	git clone git://gitorious.org/xmpp/xmpp.git
+xeps:
+	git clone git@github.com:xsf/xeps.git

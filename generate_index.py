@@ -8,14 +8,14 @@ print 'CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);'
 def putSQL(name, type, path):
   print "INSERT OR IGNORE INTO searchIndex('name', 'type', 'path') VALUES ('%s', '%s', '%s');" % (name, type, path)
 
-for i in range(1,353):
+for i in range(1,380):
   path = "xep-%04d.html" % i
   type = 'Extension'
   name = "xep%d" % i
   putSQL(name, type, path)
   name = "xep%04d" % i
   putSQL(name, type, path)
-  dom = xml.dom.minidom.parse("xmpp/extensions/xep-%04d.xml" % i)
+  dom = xml.dom.minidom.parse("xeps/xep-%04d.xml" % i)
   header = dom.getElementsByTagName('header')
   title = header[0].getElementsByTagName('title')[0]
   for child in title.childNodes:
