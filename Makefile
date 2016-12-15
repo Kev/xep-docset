@@ -10,7 +10,7 @@ clean:
 
 .PHONY: db
 db: xeps-build
-	python generate_index.py | sqlite3 XEPs.docset/Contents/Resources/docSet.dsidx
+	python generate_index.py XEPs.docset/Contents/Resources/docSet.dsidx
 
 .PHONY: docs
 docs: XEPs.docset/Contents/Resources/Documents xeps-build
