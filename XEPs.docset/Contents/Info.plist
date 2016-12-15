@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>XEP Series</string>
 	<key>DocSetPlatformFamily</key>
-	<string>xmpp</string>
+	<string>xep</string>
 	<key>isDashDocset</key>
 	<true/>
 </dict>
