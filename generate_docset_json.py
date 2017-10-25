@@ -6,9 +6,9 @@ import sys
 
 try:
     docset = {
-        "name": "XEPs",
+        "name": "XMPP Extension Protocols",
         "version": "/" + sys.argv[3],
-        "archive": "XEPs.tgz",
+        "archive": "XMPP_Extension_Protocols.tgz",
         "author": {
             "name": "Kevin Smith",
             "link": "https://github.com/Kev/xep-docset",
